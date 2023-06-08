@@ -1,4 +1,234 @@
-.App {
+@import url(//fonts.googleapis.com/css2?family=Markazi+Text&family=Karla);
+
+.lemon-wrap .nav-link {
+  color: #000;
+}
+.lemon-wrap .nav-link:hover {
+  color: #495e57;
+}
+
+.lemon-wrap .nav-top {
+  min-height: 110px;
+}
+
+.lemon-wrap .nav-top .navbar-nav {
+  margin-left: 30px;
+}
+
+.lemon-wrap .nav-top .nav-item {
+  margin: 0 5px;
+  padding: 0 10px;
+}
+/* .lemon-wrap .nav-top .nav-item:first-child { 
+  margin-left: 0; 
+} */
+.lemon-wrap .nav-top .nav-item:last-child { 
+  margin-right: 0; 
+}
+
+.lemon-wrap .nav-top .nav-link {
+  font-family: Karla;
+  font-weight: 500;
+  font-size: 20pt;
+  color: #000;
+}
+
+.lemon-header {
+  font-family: 'Markazi Text';
+  font-weight: 400; /* regular */
+  color: #fff;
+  background-color: #495e57;
+  max-height: 335px;
+}
+
+.lemon-header .hd-left {
+  padding: 2rem 0;
+}
+.lemon-header .hd-right {
+  position: relative;
+}
+
+.lemon-header h3 {
+  font-weight: 500; /* medium */
+  font-size: 64pt;
+  color: #f4ce14;
+  line-height: 20pt;
+}
+
+.lemon-header h5 {
+  font-size: 40pt;
+  /* color: #f4ce14; */
+}
+
+.lemon-header p {
+  font-family: Karla;
+  font-size: 18pt;
+  padding-right: 8rem;
+}
+
+.lemon-header button {
+  font-family: Karla;
+  height: 3rem;
+  font-size: 16pt;
+  font-weight: 700; /* bold */
+  padding: .5rem 1.5rem;
+  background: #f4ce14;
+  border: none;
+  border-radius: 1rem;
+}
+
+.lemon-header .lemon-food {
+  position: absolute;
+  width: 372px;
+  height: 388px;
+  top: 30px;
+  right: 0;
+  background: url(~/public/img/restaurantfood.jpg) 0 0 no-repeat;
+  border-radius: 1.2rem;
+}
+
+.lemon-specials .row-header {
+  position: relative;
+  padding: 82px 0 56px;
+}
+
+.lemon-specials h3 {
+  font-family: 'Markazi Text';
+  font-weight: 500; /* medium */
+  font-size: 64pt;
+  color: #000;
+  line-height: 20pt;
+  padding-top: 72px;
+}
+
+.lemon-specials button {
+  position: absolute;
+  font-family: Karla;
+  height: 3rem;
+  font-size: 16pt;
+  font-weight: 700; /* bold */
+  padding: .5rem 1.5rem;
+  top: 140px;
+  right: 0;
+  background: #f4ce14;
+  border: none;
+  border-radius: 1rem;
+}
+
+.lemon-specials .lemon-item {
+  padding-bottom: 30px;
+  background-color: #edefee;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+.lemon-specials .lemon-item .lemon-item-img {
+  width: inherit;
+  height: 232px;
+  background-repeat: no-repeat;
+  background-position: 0 bottom;
+  background-size: cover;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+.lemon-specials .lemon-item.greek-salad .lemon-item-img {
+  background-image: url(~/public/img/greek-salad.jpg);
+  background-size: contain;
+}
+.lemon-specials .lemon-item.bruchetta .lemon-item-img {
+  background-image: url(~/public/img/bruchetta.jpg);
+  background-size: contain;
+}
+.lemon-specials .lemon-item.dessert .lemon-item-img {
+  background-image: url(~/public/img/dessert.jpg);
+}
+.lemon-specials .lemon-item .card,
+.lemon-specials .lemon-item .card-header,
+.lemon-specials .lemon-item .card-footer {
+  background: none;
+  border: none;
+}
+.lemon-specials .lemon-item .card-header {
+  font-size: 20px;
+  font-weight: 700;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+.lemon-specials .lemon-item .card-body {
+  min-height: 250px;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+.lemon-specials .lemon-item .card-footer {
+  font-size: 18px;
+  font-weight: 700;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+.lemon-specials .lemon-item .card-body p {
+  max-width: 65ch;
+  font-family: Karla;
+  font-size: 16pt;
+}
+
+
+.lemon-testimonials .row-header {
+  position: relative;
+  justify-content: center;
+  padding: 82px 0 56px;
+}
+
+.lemon-testimonials h3 {
+  font-family: 'Markazi Text';
+  font-weight: 500; /* medium */
+  font-size: 64pt;
+  color: #000;
+  line-height: 20pt;
+  padding-top: 72px;
+}
+
+.lemon-about {
+  font-family: 'Markazi Text';
+  font-weight: 400; /* regular */
+  color: #000;
+  background-color: #edefee;
+  max-height: 335px;
+}
+
+.lemon-about .hd-left {
+  padding: 2rem 0;
+}
+.lemon-about .hd-right {
+  position: relative;
+}
+
+.lemon-about h3 {
+  font-weight: 500; /* medium */
+  font-size: 64pt;
+  color: #495e57;
+  line-height: 20pt;
+}
+
+.lemon-about h5 {
+  font-size: 40pt;
+}
+
+.lemon-about p {
+  font-family: Karla;
+  font-size: 18pt;
+  padding-right: 8rem;
+}
+
+.lemon-about .lemon-food {
+  position: absolute;
+  width: 372px;
+  height: 388px;
+  top: 30px;
+  right: 0;
+  background: url(~/public/img/restaurantfood.jpg) 0 0 no-repeat;
+  border-radius: 1.2rem;
+}
+
+/*.App {
   text-align: center;
 }
 
@@ -35,4 +265,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+}*/

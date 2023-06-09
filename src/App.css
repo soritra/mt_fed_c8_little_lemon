@@ -1,14 +1,12 @@
 @import url(//fonts.googleapis.com/css2?family=Markazi+Text&family=Karla);
 
-.lemon-wrap .nav-link {
-  color: #000;
-}
-.lemon-wrap .nav-link:hover {
-  color: #495e57;
-}
-
+/* nav */
 .lemon-wrap .nav-top {
   min-height: 110px;
+}
+
+.lemon-wrap .nav-top .nav-link {
+  color: #000;
 }
 
 .lemon-wrap .nav-top .navbar-nav {
@@ -16,23 +14,55 @@
 }
 
 .lemon-wrap .nav-top .nav-item {
+  position: relative;
   margin: 0 5px;
   padding: 0 10px;
 }
-/* .lemon-wrap .nav-top .nav-item:first-child { 
-  margin-left: 0; 
-} */
+.lemon-wrap .nav-top .nav-item.active {
+  background: #f4ce14;
+  border-radius: 2rem;
+}
 .lemon-wrap .nav-top .nav-item:last-child { 
   margin-right: 0; 
 }
 
 .lemon-wrap .nav-top .nav-link {
+  position: relative;
   font-family: Karla;
   font-weight: 500;
   font-size: 20pt;
   color: #000;
+  z-index: 2;
+}
+.lemon-wrap .nav-top .nav-item:hover .nav-link,
+.lemon-wrap .nav-top .nav-item.active .nav-link {
+  color: #495e57;
+}
+.lemon-wrap .nav-top .nav-item.active:hover .nav-link {
+  cursor: default;
 }
 
+.lemon-wrap .nav-top .nav-item:before {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  left: 0px;
+  bottom: 0px;
+  content: '';
+  background: #ee9972;
+  opacity: 0.3;
+  transition: all 0.5s;
+  border-radius: 2rem;
+  z-index: 0;
+}
+.lemon-wrap .nav-top .nav-item:hover:before {
+  height: 100%;
+}
+.lemon-wrap .nav-top .nav-item.active:before {
+  height: 0;
+}
+
+/* header */
 .lemon-header {
   font-family: 'Markazi Text';
   font-weight: 400; /* regular */
@@ -57,7 +87,6 @@
 
 .lemon-header h5 {
   font-size: 40pt;
-  /* color: #f4ce14; */
 }
 
 .lemon-header p {
@@ -87,6 +116,7 @@
   border-radius: 1.2rem;
 }
 
+/* specials */
 .lemon-specials .row-header {
   position: relative;
   padding: 82px 0 56px;
@@ -170,11 +200,46 @@
   font-size: 16pt;
 }
 
+.lemon-specials .order-link {
+  color: #495e57;
+  text-decoration: none;
+}
+.lemon-specials .order-link:after {
+  display: inline-block;
+  position: relative;
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  top: .5rem;
+  margin-left: .7rem;
+  background: url(~/public/img/bicycle.png) 0 center no-repeat;
+  background-size: contain;
+}
+.lemon-specials .order-link:hover {
+  /* color: #f4ce14; */
+  text-decoration: underline;
+}
+
+/* Testimonials */
+.lemon-testimonials {
+  padding: 50px 0;
+}
+
+.lemon-testimonials .row {
+  margin: 0;
+}
+
+.lemon-testimonials .row .col:first-child {
+  padding-left: 0;
+}
+.lemon-testimonials .row .col:nth-child(-n+4) {
+  padding-right: 0;
+}
 
 .lemon-testimonials .row-header {
   position: relative;
   justify-content: center;
-  padding: 82px 0 56px;
+  padding-bottom: 50px;
 }
 
 .lemon-testimonials h3 {
@@ -183,15 +248,33 @@
   font-size: 64pt;
   color: #000;
   line-height: 20pt;
-  padding-top: 72px;
+}
+
+.lemon-testimonials .card {
+  border-color: #edefee;
+}
+
+.lemon-testimonials .card-header {
+  background: none;
+  border: none;
+}
+
+.lemon-testimonials .card-body p {
+  padding-top: 1.5rem;
+}
+
+.lemon-testimonials .photo {
+  width: 100px;
+  height: 100px;
+  background: #edefee;
 }
 
 .lemon-about {
   font-family: 'Markazi Text';
   font-weight: 400; /* regular */
   color: #000;
+  padding: 50px 0 20px;
   background-color: #edefee;
-  max-height: 335px;
 }
 
 .lemon-about .hd-left {
@@ -218,14 +301,61 @@
   padding-right: 8rem;
 }
 
-.lemon-about .lemon-food {
+.lemon-about .lemon-brother1 {
   position: absolute;
-  width: 372px;
-  height: 388px;
-  top: 30px;
+  width: 270px;
+  height: 300px;
+  top: 0;
   right: 0;
   background: url(~/public/img/restaurantfood.jpg) 0 0 no-repeat;
   border-radius: 1.2rem;
+  z-index: 2;
+}
+
+.lemon-about .lemon-brother2 {
+  position: absolute;
+  width: 270px;
+  height: 300px;
+  top: 70px;
+  right: 180px;
+  background: url(~/public/img/restaurantfood.jpg) 0 0 no-repeat;
+  border-radius: 1.2rem;
+  z-index: 1;
+}
+
+.lemon-footer {
+  font-family: Karla;
+  color: #edefee;
+  padding: 40px 0 30px;
+  background: #333;
+}
+
+.lemon-footer em {
+  display: block;
+  max-width: 120pt;
+  min-height: 65pt;
+  font-size: 18pt;
+  font-weight: 500;
+  font-style: normal;
+  color: #fbdabb;
+}
+
+.lemon-footer .logo {
+  width: 100px;
+  height: 180px;
+  background: url(~/public/img/lemon.png) center center no-repeat;
+}
+
+.lemon-footer .nav-item,
+.lemon-footer .nav-link {
+  font-size: 16pt;
+  color: #edefee;
+}
+.lemon-footer .nav-link:hover {
+  color: #f4ce14;
+}
+.lemon-footer .contact .nav-item {
+  padding: .5rem 0;
 }
 
 /*.App {

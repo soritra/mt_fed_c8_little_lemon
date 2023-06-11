@@ -14,7 +14,7 @@ function Footer() {
               <li className="nav-item active"><a className="nav-link" href="/">Home</a></li>
               <li className="nav-item"><a className="nav-link" href="/about">About</a></li>
               <li className="nav-item"><a className="nav-link" href="/menu">Menu</a></li>
-              <li className="nav-item"><a className="nav-link" href="/reservations">Reservations</a></li>
+              <li className="nav-item"><a className="nav-link" href="/reservation">Reservations</a></li>
               <li className="nav-item"><a className="nav-link" href="/order">Order Online</a></li>
               <li className="nav-item"><a className="nav-link" href="/login">Login</a></li>
             </ul>

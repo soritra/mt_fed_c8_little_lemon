@@ -1,14 +1,19 @@
 import React from 'react';
 
 import Nav from '../components/Nav';
-// import Header from '../components/Header';
+import Main from '../components/Main';
+import Specials from '../components/Specials';
 import Footer from '../components/Footer';
+
+const page = 'menu';
 
 function MenuPage() {
   return (
     <>
-      <Nav page='menu' />
-      Menu
+      <Nav page={page} />
+      <Main style={{ paddingBottom: '2rem' }}>
+        <Specials page={page} />
+      </Main>
       <Footer />
     </>
   );

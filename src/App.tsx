@@ -4,7 +4,7 @@ import { /*Navigate,*/ BrowserRouter as Router, Route, Routes } from 'react-rout
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import MenuPage from './pages/MenuPage';
-import ReservationPage from './pages/ReservationPage';
+import BookingPage from './pages/BookingPage';
 import OrderPage from './pages/OrderPage';
 import SigninPage from './pages/SigninPage';
 import './App.css';
@@ -16,7 +16,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path='/reservation' element={<ReservationPage />} />
+        <Route path='/reservation' element={<BookingPage />} />
         <Route path='/order' element={<OrderPage />} />
         <Route path='/login' element={<SigninPage />} />
       </Routes>

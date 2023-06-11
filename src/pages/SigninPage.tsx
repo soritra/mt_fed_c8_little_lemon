@@ -1,14 +1,16 @@
 import React from 'react';
 
 import Nav from '../components/Nav';
-// import Header from '../components/Header';
+import Main from '../components/Main';
 import Footer from '../components/Footer';
 
 function SigninPage() {
   return (
     <>
       <Nav page='login' />
-      Sign In
+      <Main style={{ paddingBottom: '2rem' }}>
+        <div className="container">Sign In</div>
+      </Main>
       <Footer />
     </>
   );

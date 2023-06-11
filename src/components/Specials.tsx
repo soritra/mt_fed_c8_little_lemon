@@ -1,12 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Specials() {
+interface ActivePage {
+  page?: string
+}
+
+function Specials({ page }:ActivePage) {
   return (
     <section className="lemon-specials">
       <div className="container">
         <div className="row row-header">
-          <h3>This weeks specials!</h3>
-          <button>Online Menu</button>
+          <h3 className={ (page === 'menu') ? 'pg-menu' : '' }>This weeks specials!</h3>
+          {
+            (page === 'menu') || <Link className="lemon-link" to="/menu">Online Menu</Link>
+          }
         </div>
         <div className="row">
           <div className="col col-4">

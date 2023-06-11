@@ -1,8 +1,28 @@
 @import url(//fonts.googleapis.com/css2?family=Markazi+Text&family=Karla);
 
+html {
+  height: 100%;
+}
+
+body.lemon-wrap {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 445px;
+}
+
+.lemon-root {
+  padding-top: 110px;
+}
+
 /* nav */
 .lemon-wrap .nav-top {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
   min-height: 110px;
+  background: #fff;
+  z-index: 10;
 }
 
 .lemon-wrap .nav-top .nav-link {
@@ -95,11 +115,13 @@
   padding-right: 8rem;
 }
 
-.lemon-header button {
+.lemon-header .lemon-link {
+  display: inline-block;
   font-family: Karla;
   height: 3rem;
   font-size: 16pt;
   font-weight: 700; /* bold */
+  color: #495e57;
   padding: .5rem 1.5rem;
   background: #f4ce14;
   border: none;
@@ -130,13 +152,17 @@
   line-height: 20pt;
   padding-top: 72px;
 }
+.lemon-specials h3.pg-menu {
+  padding-top: unset;
+}
 
-.lemon-specials button {
+.lemon-specials .lemon-link {
   position: absolute;
   font-family: Karla;
   height: 3rem;
   font-size: 16pt;
   font-weight: 700; /* bold */
+  color: #495e57;
   padding: .5rem 1.5rem;
   top: 140px;
   right: 0;
@@ -269,6 +295,7 @@
   background: #edefee;
 }
 
+/* about */
 .lemon-about {
   font-family: 'Markazi Text';
   font-weight: 400; /* regular */
@@ -323,11 +350,17 @@
   z-index: 1;
 }
 
+/* footer */
 .lemon-footer {
+  position: absolute;
+  width: 100%;
   font-family: Karla;
   color: #edefee;
+  left: 0;
+  bottom: 0;
   padding: 40px 0 30px;
   background: #333;
+  z-index: 5;
 }
 
 .lemon-footer em {

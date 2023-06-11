@@ -10,7 +10,6 @@ interface NavConfig {
 }
 
 function Nav({ page }: ActivePage) {
-  // const cls = (page === '') ? : ;
   const config: NavConfig = {
     'home': "Home",
     'about': "About",

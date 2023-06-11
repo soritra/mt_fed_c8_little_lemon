@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -12,7 +13,7 @@ function Header() {
               We are a family owned Mediterranean restaurant, 
               focused on traditional recipes served with a modern twist.
             </p>
-            <button>Reserve a Table</button>
+            <Link className="lemon-link" to="/reservation">Reserve a Table</Link>
           </section>
           <section className="col col-6">
             <div className="lemon-food"></div>

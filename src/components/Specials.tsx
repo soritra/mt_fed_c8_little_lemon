@@ -16,7 +16,7 @@ function Specials({ page }:ActivePage) {
           }
         </div>
         <div className="row">
-          <div className="col col-4">
+          <div className="col-sm-12 col-md-4">
             <article className="lemon-item greek-salad">
               <div className="lemon-item-img"></div>
               <div className="card">
@@ -34,7 +34,7 @@ function Specials({ page }:ActivePage) {
               </div>
             </article>
           </div>
-          <div className="col col-4">
+          <div className="col-sm-12 col-md-4">
             <article className="lemon-item bruchetta">
               <div className="lemon-item-img"></div>
               <div className="card">
@@ -52,7 +52,7 @@ function Specials({ page }:ActivePage) {
               </div>
             </article>
           </div>
-          <div className="col col-4">
+          <div className="col-sm-12 col-md-4">
             <article className="lemon-item dessert">
               <div className="lemon-item-img"></div>
               <div className="card">

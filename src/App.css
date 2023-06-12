@@ -15,7 +15,87 @@ body.lemon-wrap {
 }
 
 /* nav */
-.lemon-wrap .nav-top {
+
+.lemon-wrap .custom-nav {
+  background: #fff;
+}
+.lemon-wrap .custom-nav .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.lemon-wrap .custom-nav .navbar-toggler {
+  display: none;
+}
+.lemon-wrap .custom-nav .navitem-wrap {
+  display: block;
+  flex-basis: 60%;
+}
+.lemon-wrap .custom-nav .navitem-wrap .navbar-nav {
+  flex-direction: row;
+  justify-content: end;
+}
+.lemon-wrap .custom-nav .nav-link {
+  color: #000;
+}
+.lemon-wrap .custom-nav .navbar-nav {
+  margin-left: 30px;
+}
+.lemon-wrap .custom-nav .nav-item {
+  position: relative;
+  margin: 0 5px;
+  padding: 0 10px;
+}
+.lemon-wrap .custom-nav .nav-item.active {
+  background: #f4ce14;
+  border-radius: 2rem;
+}
+.lemon-wrap .custom-nav .nav-item:last-child {
+  margin-right: 0;
+}
+.lemon-wrap .custom-nav .nav-link {
+  position: relative;
+  font-family: Karla;
+  font-weight: 500;
+  font-size: 16pt;
+  color: #000;
+  z-index: 2;
+}
+.lemon-wrap .custom-nav .nav-item:hover .nav-link,
+.lemon-wrap .custom-nav .nav-item.active .nav-link {
+  color: #495e57;
+}
+.lemon-wrap .custom-nav .nav-item.active:hover .nav-link {
+  cursor: default;
+}
+.lemon-wrap .custom-nav .nav-item:before {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  left: 0px;
+  bottom: 0px;
+  content: '';
+  background: #ee9972;
+  opacity: 0.3;
+  transition: all 0.5s;
+  border-radius: 2rem;
+  z-index: 0;
+}
+.lemon-wrap .custom-nav .nav-item:hover:before {
+  height: 100%;
+}
+.lemon-wrap .custom-nav .nav-item.active:before {
+  height: 0;
+}
+
+.lemon-logo {
+  display: block;
+  width: 250px;
+  height: 68px;
+  background: url(~/public/img/logo.png) 0 0 no-repeat;
+  background-size: cover;
+}
+
+/* .lemon-wrap .nav-top {
   position: fixed;
   width: 100%;
   top: 0;
@@ -24,7 +104,6 @@ body.lemon-wrap {
   background: #fff;
   z-index: 10;
 }
-
 .lemon-wrap .nav-top .nav-link {
   color: #000;
 }
@@ -80,7 +159,7 @@ body.lemon-wrap {
 }
 .lemon-wrap .nav-top .nav-item.active:before {
   height: 0;
-}
+} */
 
 /* header */
 .lemon-header {
@@ -227,17 +306,17 @@ body.lemon-wrap {
 }
 
 .lemon-specials .order-link {
+  position: relative;
   color: #495e57;
   text-decoration: none;
 }
 .lemon-specials .order-link:after {
-  display: inline-block;
-  position: relative;
+  position: absolute;
   content: "";
   width: 2rem;
   height: 2rem;
-  top: .5rem;
-  margin-left: .7rem;
+  top: -5px;
+  right: -35px;
   background: url(~/public/img/bicycle.png) 0 center no-repeat;
   background-size: contain;
 }
@@ -260,6 +339,24 @@ body.lemon-wrap {
 }
 .lemon-testimonials .row .col:nth-child(-n+4) {
   padding-right: 0;
+}
+.lemon-testimonials .testimonials-profile .photo1 img,
+.lemon-testimonials .testimonials-profile .photo2 img,
+.lemon-testimonials .testimonials-profile .photo3 img {
+  width: inherit;
+  height: inherit;
+  background-size: contain;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.lemon-testimonials .testimonials-profile .photo1 img {
+  background-image: url(~/public/img/testimonial1.png);
+}
+.lemon-testimonials .testimonials-profile .photo2 img {
+  background-image: url(~/public/img/testimonial2.png);
+}
+.lemon-testimonials .testimonials-profile .photo3 img {
+  background-image: url(~/public/img/testimonial3.png);
 }
 
 .lemon-testimonials .row-header {
@@ -328,15 +425,20 @@ body.lemon-wrap {
   padding-right: 8rem;
 }
 
+.about-header {
+  height: 320px;
+  background: url(~/public/img/about-restaurant1.jpg) 0 0 no-repeat;
+}
+
 .lemon-about .lemon-brother1 {
   position: absolute;
   width: 270px;
   height: 300px;
   top: 0;
   right: 0;
-  background: url(~/public/img/restaurantfood.jpg) 0 0 no-repeat;
+  background: url(~/public/img/about-restaurant3.jpg) 0 0 no-repeat;
   border-radius: 1.2rem;
-  z-index: 2;
+  z-index: 1;
 }
 
 .lemon-about .lemon-brother2 {
@@ -345,9 +447,9 @@ body.lemon-wrap {
   height: 300px;
   top: 70px;
   right: 180px;
-  background: url(~/public/img/restaurantfood.jpg) 0 0 no-repeat;
+  background: url(~/public/img/about-restaurant2.jpg) 0 0 no-repeat;
   border-radius: 1.2rem;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* footer */
@@ -374,9 +476,9 @@ body.lemon-wrap {
 }
 
 .lemon-footer .logo {
-  width: 100px;
-  height: 180px;
-  background: url(~/public/img/lemon.png) center center no-repeat;
+  width: 192px;
+  height: 192px;
+  background: url(~/public/img/lemon-w.png) center center no-repeat;
 }
 
 .lemon-footer .nav-item,
@@ -391,41 +493,341 @@ body.lemon-wrap {
   padding: .5rem 0;
 }
 
-/*.App {
-  text-align: center;
+/* reservations page */
+
+.lemon-wrap .booking-hero {
+  height: 336px;
+  background: url(~/public/img/restaurant-tables.jpg) center bottom no-repeat;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.lemon-wrap .booking-form-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.lemon-wrap .col-form-label {
+  font-family: Karla;
+  font-size: 16pt;
+}
+
+.lemon-btn {
+  width: 200px;
+  height: 3rem;
+  font-family: Karla;
+  font-size: 16pt;
+  font-weight: 700;
+  color: #edefee;
+  padding: 0.5rem 1.5rem;
+  background: #495e57;
+  border: none;
+  border-radius: 1rem;
+}
+
+/* phone screen */
+@media only screen and (max-width: 600px) {
+  .lemon-logo {
+    width: 168px;
+    height: 44px;
+  }
+
+  body.lemon-wrap {
+    position: unset;
+    min-height: unset;
+    padding: 0;
+  }
+
+  .lemon-root {
+    padding-top: 70px;
+  }
+
+  .lemon-wrap .inner {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  /* nav */
+  .lemon-wrap .custom-nav .navbar-toggler {
+    display: block;
+  }
+  .navbar.custom-nav {
+    background: #edefee;
+    transition: all .6s;
+    backface-visibility: hidden;
+    box-shadow: 0 2px 5px 1px rgba(51, 51, 51, 0.5);
+  }
+
+  .lemon-wrap .custom-nav .navitem-list {
+    display: none;
+    flex-basis: unset;
+  }
+  .lemon-wrap .custom-nav .navbar-collapse.collapse:not(.show) {
+    display: none;
+  }
+  .lemon-wrap .custom-nav .navitem-wrap .navbar-nav {
+    flex-direction: column;
+  }
+
+  .lemon-wrap .custom-nav .navbar-nav {
+    font-size: 15px;
+    color: #495e57;
+    text-transform: uppercase;
+  }
+  .lemon-wrap .custom-nav .navbar-nav .nav-link {
+    color: #495e57;
+    /* color: rgba(255, 255, 255, 0.8); */
+    border: 0;
+  }
+  .lemon-wrap .custom-nav .navbar-nav .nav-link:hover {
+    color: #f4ce14;
+  }
+  .lemon-wrap .custom-nav .navbar-nav .nav-link:focus {
+    color: #f4ce14;
+    outline: 0;
+  }
+  .lemon-wrap .custom-nav .navbar-toggler {
+    border-color: #495e57;
+  }
+  .navbar-dark .navbar-toggler:focus {
+    background: none;
+    outline: 0;
+  }
+  .lemon-wrap .custom-nav .navbar-toggler span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    margin: 6px auto;
+    background: #495e57;
+    transition: all .6s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  }
+  .lemon-wrap .custom-nav .navbar-toggler:hover span,
+  .lemon-wrap .custom-nav .navbar-toggler:focus span {
+    background: #495e57;
+  }
+  /* rotate first span */
+  .lemon-wrap .custom-nav .navbar-toggler[aria-expanded="true"] span:first-of-type {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  /* hide second span */
+  .lemon-wrap .custom-nav .navbar-toggler[aria-expanded="true"] span:nth-of-type(2) {
+    opacity: 0;
+  }
+  /* rotate third span */
+  .lemon-wrap .custom-nav .navbar-toggler[aria-expanded="true"] span:last-of-type {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  .lemon-wrap .custom-nav .navbar-toggler[aria-expanded="false"] span {
+    transform: none;
+    opacity: 1;
+  }
+  .lemon-wrap .custom-nav .navbar-brand {
+    width: 162px;
+    height: 54px;
+    border: 0;
+    text-indent: -99999px;
+  }
+  /* rotate first span */
+  .lemon-wrap .custom-nav .navbar-toggler[aria-expanded="true"] span:first-of-type {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  /* hide second span */
+  .lemon-wrap .custom-nav .navbar-toggler[aria-expanded="true"] span:nth-of-type(2) {
+    opacity: 0;
+  }
+  /* rotate third span */
+  .lemon-wrap .custom-nav .navbar-toggler[aria-expanded="true"] span:last-of-type {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  .lemon-wrap .custom-nav .navbar-toggler[aria-expanded="false"] span {
+    transform: none;
+    opacity: 1;
+  }
+  /* end nav */
+
+  /* hero section */
+  .lemon-header {
+    max-height: unset;
+  }
+  .lemon-header h3 {
+    font-size: 54pt;
+  }
+  .lemon-header h5 {
+    font-size: 32pt;
+  }
+  .lemon-header p {
+    font-size: 16pt;
+    padding-right: unset;
+  }
+
+  /* specials section */
+  .lemon-specials .row-header {
+    padding: 20px;
+  }
+
+  .lemon-specials h3 {
+    font-size: 38pt;
+    padding: 20px 0;
+  }
+
+  .lemon-specials .lemon-link {
+    position: unset;
+  }
+
+  .lemon-specials .lemon-item .lemon-item-img {
+    background-position: center;
+  }
+
+  .lemon-specials .lemon-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .lemon-specials .lemon-item .card-body {
+    min-height: unset;
+  }
+
+  /* testimonials section */
+  .lemon-testimonials h3 {
+    font-size: 48pt;
+  }
+
+  /* reservation section */
+  .lemon-wrap .booking-hero {
+    height: 115px;
+    background-size: contain;
+  }
+
+  .lemon-header .lemon-food {
+    position: unset;
+    width: 100%;
+    background-size: contain;
+  }
+
+  .lemon-btn {
+    width: 140px;
+  }
+
+  /* about section */
+  .lemon-about {
+    padding-top: 20px;
+  }
+  .about-header {
+    height: 111px;
+    background-size: contain;
+  }
+  .lemon-about h3 {
+    font-size: 54pt;
+  }
+
+  .lemon-about h5 {
+    font-size: 32pt;
+  }
+
+  .lemon-about p {
+    font-size: 16pt;
+    padding-right: unset;
+  }
+
+  .lemon-about .lemon-brother1, .lemon-about .lemon-brother2 {
+    position: unset;
+  }
+
+  .lemon-footer {
+    display: none;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (min-width: 601px) and (max-width: 912px) {
+  .lemon-logo {
+    width: 168px;
+    height: 44px;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* nav */
+  .lemon-wrap .custom-nav .nav-item {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding: 0 4px;
   }
-}*/
+  .lemon-wrap .custom-nav .nav-link {
+    font-size: 15pt;
+  }
+
+  /* hero section */
+  .lemon-header h3 {
+    font-size: 54pt;
+  }
+  .lemon-header h5 {
+    font-size: 32pt;
+  }
+  .lemon-header p {
+    font-size: 16pt;
+    padding-right: 3rem;
+  }
+  .lemon-header .lemon-food {
+    width: 290px;
+    height: 302px;
+    top: 50px;
+    right: 20px;
+  }
+
+  /* specials section */
+  .lemon-specials .row-header {
+    padding: 20px 0 30px;
+  }
+  .lemon-specials h3 {
+    font-size: 48pt;
+  }
+  .lemon-specials .lemon-link {
+    top: 80px;
+  }
+  .lemon-specials .lemon-item .card-header,
+  .lemon-specials .lemon-item .card-body,
+  .lemon-specials .lemon-item .card-footer {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  .lemon-specials .lemon-item .card-body {
+    min-height: 380px;
+  }
+  .lemon-specials .lemon-item .lemon-item-img {
+    height: 140px;
+  }
+
+  /* testimonials section */
+  .lemon-testimonials h3 {
+    font-size: 48pt;
+  }
+  .lemon-testimonials .testimonials-profile .col {
+    flex: unset;
+    max-width: unset;
+  }
+
+  /* about section */
+  .lemon-about {
+    padding-top: 30px;
+  }
+  .lemon-about .hd-left {
+    padding: 1rem 0;
+  }
+  .lemon-about h3 {
+    font-size: 54pt;
+  }
+  .lemon-about h5 {
+    font-size: 32pt;
+  }
+  .lemon-about p {
+    font-size: 16pt;
+    padding-right: 4.5rem;
+  }
+  .lemon-about .lemon-brother1,
+  .lemon-about .lemon-brother2 {
+    width: 220px;
+    height: 250px;
+    background-size: cover;
+  }
+  .lemon-about .lemon-brother2 {
+    right: 140px;
+  }
+}

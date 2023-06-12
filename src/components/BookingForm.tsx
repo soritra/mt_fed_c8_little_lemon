@@ -3,13 +3,22 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 
 
-interface Booker {
-  name: string,
+interface Booking {
+  author: string,
+  resDate: string,
+  resTime: string,
   guests: number,
   occasion: string,
 }
 
-type reservationList = Record<string, Record<string, Array<Booker>>>;
+// interface BookingError {
+//   resDate?: string,
+//   resTime?: string,
+//   guests?: number,
+//   occasion?: string,
+// }
+
+type reservationList = Record<string, Record<string, Array<Booking>>>;
 const reservations:reservationList = {};
 
 const maxGuests = 10;           // maximum number of guests per time slot per day
@@ -24,7 +33,7 @@ const BookingForm = () => {
   const [availableGuests, setAvailableGuests] = useState(maxGuests);
   const [timeFieldDisabled, setTimeFieldDisabled] = useState(true);
   const [guestsFieldDisabled, setGuestsFieldDisabled] = useState(true);
-  const [occasionFieldDisabled, setOccasionFieldDisabled] = useState(true);
+  // const [occasionFieldDisabled, setOccasionFieldDisabled] = useState(true);
 
   const timeOptions = availableTimes.map((v, k) => {
     return (
@@ -34,13 +43,13 @@ const BookingForm = () => {
 
   const formik = useFormik({
     initialValues: {
+      author: 'Koto',
       resDate: '',
       resTime: '',
-      guests: 1,
+      guests: 0,
       occasion: ''
     },
     onSubmit: (values) => {
-      console.log(55, values)
       // submit("", values);
       if (!(values.resDate in reservations)) {
         reservations[values.resDate] = {};
@@ -52,23 +61,25 @@ const BookingForm = () => {
         reservations[values.resDate][values.resTime] = [];
       }
       reservations[values.resDate][values.resTime][n] = {
-        name: "Koto",
+        author: "Koto",
+        resDate: values.resDate,
+        resTime: values.resTime,
         guests: Number(values.guests),
         occasion: values.occasion,
       };
-      console.log(reservations)
+      console.log(JSON.stringify(reservations, null, 2))
       formik.resetForm();
     },
     validateOnChange: false,
     validationSchema: Yup.object({
       resDate: Yup.string().required("Date is required"),
       resTime: Yup.string().required("Time is required"),
-      guests: Yup.number().required("Guests number is required"),
-      occasion: Yup.string().required("Occasion is required")
+      guests: Yup.number().min(1, "Guests number must be >= 1").required("Guests number is required"),
+      // occasion: Yup.string().required("Occasion is required")
     }),
   });
 
-  const isFormValid = (formik.values.resDate !== "") && (formik.values.resTime !== "") && (formik.values.occasion !== "");
+  // const isFormValid = (formik.values.resDate !== "") && (formik.values.resTime !== "") && (formik.values.occasion !== "");
 
   const getDateString = (date:Date) => {
     // return `${date.getFullYear()}-0${date.getMonth()+1}-${date.getDate()}`;
@@ -122,20 +133,23 @@ const BookingForm = () => {
         }
         return guests;
       });
-      setOccasionFieldDisabled(false);
+      // setOccasionFieldDisabled(false);
     }
     formik.setFieldValue(name, value);
   };
 
+  const handleCancel = () => {
+    // e.preventDefault();
+    formik.resetForm();
+  }
+
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    formik.validateForm();
     // console.log(44, formik.values)
-    formik.handleSubmit(e);
-    // console.log(dateInputRef.current)
-    setTimeFieldDisabled(true);
-    setGuestsFieldDisabled(true);
-    setOccasionFieldDisabled(true);
-    setAvailableTimes(allSlots);
+    if (formik.isValid) {
+      formik.handleSubmit(e);
+    }
   };
 
   // useEffect(() => {
@@ -148,10 +162,10 @@ const BookingForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} style={{ 'display': 'grid', 'width': '500px', gap: '20px' }}>
+      <form onSubmit={handleSubmit}>
         <div className="form-group row">
-          <label htmlFor="resDate" className="col-5 col-form-label">Choose date</label>
-          <div className="col-7">
+          <label htmlFor="resDate" className="col-sm-12 col-md-5 col-form-label">Choose date</label>
+          <div className="col-sm-12 col-md-7">
             <input
               type="date"
               id="resDate"
@@ -159,16 +173,25 @@ const BookingForm = () => {
               min={getDateString(minDate)}
               max={getDateString(maxDate)}
               value={formik.values.resDate}
-              className="form-control"
+              className={"form-control" + (formik.errors.resDate ? " is-invalid" : "")}
               onChange={handleChange}
               onClick={handleDateClick}
               onBlur={handleBlur}
             />
           </div>
+          {
+            formik.errors.resDate ? (
+              <div className="col">
+                <small className="text-danger">
+                  {formik.errors.resDate}
+                  </small>
+              </div>
+            ) : null
+          }
         </div>
         <div className="form-group row">
-          <label htmlFor="resTime" className="col-5 col-form-label">Choose time</label>
-          <div className="col-7">
+          <label htmlFor="resTime" className="col-sm-12 col-md-5 col-form-label">Choose time</label>
+          <div className="col-sm-12 col-md-7">
             <select
               id="resTime"
               name="resTime"
@@ -181,47 +204,89 @@ const BookingForm = () => {
               {timeOptions}
             </select>
           </div>
+          {
+            formik.errors.resTime ? (
+              <div className="col">
+                <small className="text-danger">
+                  {formik.errors.resTime}
+                  </small>
+              </div>
+            ) : null
+          }
         </div>
         <div className="form-group row">
-          <label htmlFor="guests" className="col-5 col-form-label">Number of guests</label>
-          <div className="col-7">
+          <label htmlFor="guests" className="col-sm-12 col-md-5 col-form-label">Number of guests</label>
+          <div className="col-sm-12 col-md-7">
             <input
               type="number"
               id="guests"
               name="guests"
               value={formik.values.guests}
-              placeholder="1"
-              min="1"
+              placeholder="0"
+              min="0"
               max={availableGuests}
               className="form-control"
               disabled={guestsFieldDisabled}
               onChange={handleChange}
             />
           </div>
+          {
+            formik.errors.guests ? (
+              <div className="col">
+                <small className="text-danger">
+                  {formik.errors.guests}
+                  </small>
+              </div>
+            ) : null
+          }
         </div>
         <div className="form-group row">
-          <label htmlFor="occasion" className="col-5 col-form-label">Occasion</label>
-          <div className="col-7">
+          <label htmlFor="occasion" className="col-sm-12 col-md-5 col-form-label">Occasion</label>
+          <div className="col-sm-12 col-md-7">
             <select
               id="occasion"
               name="occasion"
               value={formik.values.occasion}
               className="form-control"
-              disabled={occasionFieldDisabled}
+              // disabled={occasionFieldDisabled}
               onChange={handleSelectChange}
             >
               <option value="-1">--</option>
               <option value="birthday">Birthday</option>
               <option value="anniversary">Anniversary</option>
+              <option value="other">Other</option>
             </select>
           </div>
+          {
+            formik.errors.occasion ? (
+              <div className="col">
+                <small className="text-danger">
+                  {formik.errors.occasion}
+                  </small>
+              </div>
+            ) : null
+          }
         </div>
-        <input
-          type="submit"
-          className="lemon-btn"
-          value="Make Your reservation"
-          disabled={!isFormValid || JSON.stringify(formik.errors) !== '{}'}
-        />
+        <div className="row">
+          <div className="col-6">
+            <button
+              type="reset"
+              className="lemon-btn"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div>
+          <div className="col-6">
+            <button
+              type="submit"
+              className="lemon-btn"
+              title="Make your reservation"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
       </form>
     </>
   );
